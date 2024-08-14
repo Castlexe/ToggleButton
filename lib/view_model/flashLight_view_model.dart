@@ -1,14 +1,23 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:toggle_button/model/flashLight_model.dart';
+import 'package:torch_light/torch_light.dart';
 
-class FlashlightViewModel with ChangeNotifier {
+class FlashViewModel extends ChangeNotifier {
+  FlashModel _flashModel = FlashModel();
 
-  FlashlightModel _flashlightModel = FlashlightModel(isOn: false);
+  bool get isFlashOn => _flashModel.isFlashOn;
 
-  bool get isOn => _flashlightModel.isOn;
-
-  void toggleFlashlight() {
-    _flashlightModel.isOn = !_flashlightModel.isOn;
-    notifyListeners();
+  Future<void> toggleFlash() async {
+    try {
+      if (_flashModel.isFlashOn) {
+        await TorchLight.disableTorch();
+      } else {
+        await TorchLight.enableTorch();
+      }
+      _flashModel.isFlashOn = !_flashModel.isFlashOn;
+      notifyListeners();
+    } catch (e) {
+      print("Torch Light Error: $e");
+    }
   }
 }

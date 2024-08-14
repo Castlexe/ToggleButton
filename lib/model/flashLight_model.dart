@@ -1,5 +1,6 @@
-class FlashlightModel {
+class FlashModel{
 
-  bool isOn;
-  FlashlightModel({required this.isOn});
+  bool isFlashOn;
+
+  FlashModel({this.isFlashOn=false});
 }

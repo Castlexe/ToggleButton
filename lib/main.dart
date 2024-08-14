@@ -13,10 +13,9 @@ class AnaSayfa extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: ChangeNotifierProvider(
-      create: (BuildContext context)=>FlashlightViewModel(),
+        create: (BuildContext context)=>FlashViewModel(),
         child: AnaUygulama(),
       ),
     );
   }
 }
-
