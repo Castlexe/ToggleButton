@@ -16,6 +16,7 @@ class AnaSayfa extends StatelessWidget {
         create: (BuildContext context)=>FlashViewModel(),
         child: AnaUygulama(),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
